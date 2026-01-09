@@ -1,13 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-def trapz(x, y):
-    integral = 0.0
-    for i in range(len(x) - 1):
-        dx = x[i + 1] - x[i]
-        integral += 0.5 * (y[i] + y[i + 1]) * dx
-    return abs(integral)
-
 H = np.array([
     0, 8.76, 17.52, 26.28, 35.04, 43.8,
     52.56, 61.32, 70.08, 78.84, 87.6
@@ -26,6 +19,7 @@ Ifa = np.array([
     0.818333333, 0.675142857, 0.55152381
 ])
 
+# wind speed
 WSP = 10
 
 plt.figure()
@@ -35,6 +29,13 @@ plt.xlabel('Tower height (m)')
 plt.ylabel('Mass per unit length (Kg/m)')
 plt.show()
 
-mass = trapz(mu, H)
+def trapz(x, y):
+    integral = 0.0
+    for i in range(len(x) - 1):
+        dx = x[i + 1] - x[i]
+        integral += 0.5 * (y[i] + y[i + 1]) * dx
+    return integral
+
+mass = trapz(H, mu)
 
 print(f"Total Mass of the tower = {round(mass)} Kg")
