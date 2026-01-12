@@ -1,6 +1,5 @@
 import numpy as np
 from scipy.linalg import eigh
-from FiniteElementMethod import mu, E, Ifa as I, L, stiff_mat
 
 import numpy as np
 import matplotlib.pyplot as plt
